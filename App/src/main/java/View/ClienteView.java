@@ -10,5 +10,10 @@ public class ClienteView {
     }
 
 
+    public void clienteInfos(){
+        cliente.toString();
+
+    }
+
 
 }

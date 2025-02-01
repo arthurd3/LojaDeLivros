@@ -17,7 +17,7 @@ public class Cliente {
 
 
     public Cliente() {
-        this.id = contadorId;
+        this.id = id + contadorId;
         this.contadorId++;
     }
 
@@ -108,4 +108,6 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
 }
