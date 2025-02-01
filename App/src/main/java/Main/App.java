@@ -8,7 +8,6 @@ public class App {
     public void startApp(int opcao) {
 
         switch(opcao){
-
             case 0:
                 CadastarClienteController controller = new CadastarClienteController();
                 CadastroClienteView view = new CadastroClienteView(controller);

@@ -1,7 +1,8 @@
 package View;
 
 import Controller.CadastarClienteController;
-import Model.Cliente;
+import Main.App;
+import Main.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 public class    CadastroClienteView extends JFrame {
     private JTextField nomeField, telefoneField, emailField, cpfField, dataNascimentoField,
             bairroField, ruaField, numeroRuaField, cidadeField, estadoField, cepField;
-    private JButton cadastrarButton;
+    private JButton cadastrarButton , voltarButton;
 
     private CadastarClienteController controller;
 
@@ -75,7 +76,6 @@ public class    CadastroClienteView extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CadastarClienteController controller = new CadastarClienteController();
                 if(controller.cadastrarCliente(nomeField ,telefoneField , emailField , cpfField , dataNascimentoField , bairroField , ruaField , numeroRuaField , cidadeField, estadoField , cepField)){
                     JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
                     dispose();
@@ -87,6 +87,21 @@ public class    CadastroClienteView extends JFrame {
             }
         });
         panel.add(cadastrarButton);
+
+
+
+
+        voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main main = new Main();
+                dispose();
+                main.startMainApp();
+
+            }
+        });
+        panel.add(voltarButton);
 
         add(panel);
     }

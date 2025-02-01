@@ -5,9 +5,13 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
+        startMainApp();
+    }
+    
+    public static void startMainApp(){
         App app = new App();
-        String[] opcoes = {"Cadastrar Cliente", "Listar Clientes", "Deletar Cliente" ,"Editar Cliente"};
 
+        String[] opcoes = {"Cadastrar Cliente", "Listar Clientes", "Deletar Cliente" ,"Editar Cliente"};
         int escolha = JOptionPane.showOptionDialog(
                 null, // Componente pai (null = centro da tela)
                 "Selecione uma opção:", // Mensagem
@@ -39,6 +43,5 @@ public class Main {
                 System.exit(0);
                 break;
         }
-
     }
 }
