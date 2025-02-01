@@ -1,6 +1,8 @@
 package Model;
 
 public class Cliente {
+    private long contadorId = 1;
+    private long id;
     private String nome;
     private String telefone;
     private String email;
@@ -14,9 +16,9 @@ public class Cliente {
     private String cep;
 
 
-
     public Cliente() {
-
+        this.id = contadorId;
+        this.contadorId++;
     }
 
     public String getCep() {
