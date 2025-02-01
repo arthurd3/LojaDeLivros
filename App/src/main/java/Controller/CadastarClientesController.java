@@ -1,22 +1,22 @@
 package Controller;
 
-import Model.Cliente;
+import Model.Clientes;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CadastarClienteController {
+public class CadastarClientesController {
 
-    private List<Cliente> clientesCadastrados;
+    private List<Clientes> clientesCadastrados;
 
-    public CadastarClienteController() {
+    public CadastarClientesController() {
         this.clientesCadastrados = new ArrayList<>();
     }
 
     public boolean cadastrarCliente(JTextField nomeField, JTextField telefoneField, JTextField emailField, JTextField cpfField, JTextField dataNascimentoField, JTextField bairroField, JTextField ruaField, JTextField numeroRuaField, JTextField cidadeField, JTextField estadoField, JTextField cepField) {
         try{
-            Cliente cliente = new Cliente();
+            Clientes cliente = new Clientes();
             cliente.setNome(nomeField.getText());
             cliente.setTelefone(telefoneField.getText());
             cliente.setEmail(emailField.getText());
@@ -39,7 +39,7 @@ public class CadastarClienteController {
 
     }
 
-    public List<Cliente> getClientesCadastrados() {
+    public List<Clientes> getClientesCadastrados() {
         return clientesCadastrados;
     }
 }

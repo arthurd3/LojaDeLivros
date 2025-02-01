@@ -1,28 +1,25 @@
 package View;
 
-import Controller.CadastarClienteController;
-import Main.App;
+import Controller.CadastarClientesController;
 import Main.Main;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class    CadastroClienteView extends JFrame {
+public class CadastroClientesView extends JFrame {
     private JTextField nomeField, telefoneField, emailField, cpfField, dataNascimentoField,
             bairroField, ruaField, numeroRuaField, cidadeField, estadoField, cepField;
-    private JButton cadastrarButton , voltarButton;
+    private JButton cadastrarButton, voltarButton;
+    private Main main;
+    private CadastarClientesController controller;
 
-    private CadastarClienteController controller;
-
-    public CadastroClienteView(CadastarClienteController controller) {
+    public CadastroClientesView(Main main, CadastarClientesController controller) {
+        this.main = main;
         this.controller = controller;
 
         setTitle("Cadastro de Cliente");
-        setSize(400, 500);
+        setSize(500, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // CENTRALIZA
+        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(12, 2, 10, 10));
@@ -71,40 +68,27 @@ public class    CadastroClienteView extends JFrame {
         cepField = new JTextField();
         panel.add(cepField);
 
-
         cadastrarButton = new JButton("Cadastrar");
-        cadastrarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(controller.cadastrarCliente(nomeField ,telefoneField , emailField , cpfField , dataNascimentoField , bairroField , ruaField , numeroRuaField , cidadeField, estadoField , cepField)){
-                    JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
-                    dispose();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente!");
-                }
-
+        cadastrarButton.addActionListener(e -> {
+            if(controller.cadastrarCliente(nomeField ,telefoneField , emailField , cpfField , dataNascimentoField , bairroField , ruaField , numeroRuaField , cidadeField, estadoField , cepField)){
+                JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
+                dispose();
+                main.startMainApp();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente!");
             }
         });
         panel.add(cadastrarButton);
 
-
-
-
         voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main main = new Main();
-                dispose();
-                main.startMainApp();
-
-            }
+        voltarButton.addActionListener(e -> {
+            dispose();
+            main.startMainApp();
         });
         panel.add(voltarButton);
 
         add(panel);
     }
-
-
 }
+
