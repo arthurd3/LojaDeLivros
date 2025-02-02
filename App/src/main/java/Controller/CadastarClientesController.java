@@ -28,7 +28,6 @@ public class CadastarClientesController {
             cliente.setCidade(cidadeField.getText());
             cliente.setEstado(estadoField.getText());
             cliente.setCep(cepField.getText());
-
             clientesCadastrados.add(cliente);
 
             return true;

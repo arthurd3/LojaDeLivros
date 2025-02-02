@@ -18,7 +18,6 @@ public class ClientesView {
             String infos = controller.pegarInfos(cliente);
             System.out.println(infos);
         }
-
     }
 
 

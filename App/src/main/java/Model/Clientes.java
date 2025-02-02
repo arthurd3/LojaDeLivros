@@ -1,7 +1,7 @@
 package Model;
 
 public class Clientes {
-    private long contadorId = 1;
+    private static long contadorId = 0;
     private long id;
     private String nome;
     private String telefone;
@@ -17,8 +17,8 @@ public class Clientes {
 
 
     public Clientes() {
-        this.id = id + contadorId;
-        this.contadorId++;
+        this.id = contadorId;
+        ++contadorId;
     }
 
     public String getCep() {
@@ -109,5 +109,8 @@ public class Clientes {
         this.nome = nome;
     }
 
+    public long getId(){
+        return id;
+    }
 
 }

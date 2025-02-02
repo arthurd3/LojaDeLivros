@@ -3,6 +3,7 @@ package View;
 import Controller.CadastarClientesController;
 import Main.Main;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class CadastroClientesView extends JFrame {
@@ -17,78 +18,105 @@ public class CadastroClientesView extends JFrame {
         this.controller = controller;
 
         setTitle("Cadastro de Cliente");
-        setSize(500, 600);
+        setSize(550, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(12, 2, 10, 10));
+        panel.setBorder(new TitledBorder("Dados do Cliente"));
 
-        panel.add(new JLabel("Nome:"));
+        panel.add(criarLabel("Nome:"));
         nomeField = new JTextField();
         panel.add(nomeField);
 
-        panel.add(new JLabel("Telefone:"));
+        panel.add(criarLabel("Telefone:"));
         telefoneField = new JTextField();
         panel.add(telefoneField);
 
-        panel.add(new JLabel("Email:"));
+        panel.add(criarLabel("Email:"));
         emailField = new JTextField();
         panel.add(emailField);
 
-        panel.add(new JLabel("CPF:"));
+        panel.add(criarLabel("CPF:"));
         cpfField = new JTextField();
         panel.add(cpfField);
 
-        panel.add(new JLabel("Data de Nascimento:"));
+        panel.add(criarLabel("Data de Nascimento:"));
         dataNascimentoField = new JTextField();
         panel.add(dataNascimentoField);
 
-        panel.add(new JLabel("Bairro:"));
+        panel.add(criarLabel("Bairro:"));
         bairroField = new JTextField();
         panel.add(bairroField);
 
-        panel.add(new JLabel("Rua:"));
+        panel.add(criarLabel("Rua:"));
         ruaField = new JTextField();
         panel.add(ruaField);
 
-        panel.add(new JLabel("Número da Rua:"));
+        panel.add(criarLabel("Número da Rua:"));
         numeroRuaField = new JTextField();
         panel.add(numeroRuaField);
 
-        panel.add(new JLabel("Cidade:"));
+        panel.add(criarLabel("Cidade:"));
         cidadeField = new JTextField();
         panel.add(cidadeField);
 
-        panel.add(new JLabel("Estado:"));
+        panel.add(criarLabel("Estado:"));
         estadoField = new JTextField();
         panel.add(estadoField);
 
-        panel.add(new JLabel("CEP:"));
+        panel.add(criarLabel("CEP:"));
         cepField = new JTextField();
         panel.add(cepField);
 
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
         cadastrarButton = new JButton("Cadastrar");
         cadastrarButton.addActionListener(e -> {
             if(controller.cadastrarCliente(nomeField ,telefoneField , emailField , cpfField , dataNascimentoField , bairroField , ruaField , numeroRuaField , cidadeField, estadoField , cepField)){
                 JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
                 dispose();
+                limparCampos();
                 main.startMainApp();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente!");
             }
         });
-        panel.add(cadastrarButton);
+        buttonPanel.add(cadastrarButton);
 
         voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(e -> {
+            limparCampos();
             dispose();
             main.startMainApp();
         });
-        panel.add(voltarButton);
+        buttonPanel.add(voltarButton);
 
-        add(panel);
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private JLabel criarLabel(String texto) {
+        JLabel label = new JLabel(texto);
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        return label;
+    }
+
+    private void limparCampos() {
+        nomeField.setText("");
+        telefoneField.setText("");
+        emailField.setText("");
+        cpfField.setText("");
+        dataNascimentoField.setText("");
+        bairroField.setText("");
+        ruaField.setText("");
+        numeroRuaField.setText("");
+        cidadeField.setText("");
+        estadoField.setText("");
+        cepField.setText("");
     }
 }
+
 

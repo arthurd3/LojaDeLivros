@@ -63,6 +63,7 @@ public class Main {
                 break;
             case 1:
                 clienteView.clienteInfos();
+                startMainApp();
                 break;
             default:
                 System.exit(0);
