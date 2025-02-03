@@ -73,14 +73,15 @@ public class CadastroClientesView extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
         cadastrarButton = new JButton("Cadastrar");
         cadastrarButton.addActionListener(e -> {
-            if(controller.cadastrarCliente(nomeField ,telefoneField , emailField , cpfField , dataNascimentoField , bairroField , ruaField , numeroRuaField , cidadeField, estadoField , cepField)){
+
+            if(controller.cadastrarCliente(nomeField.getText() ,telefoneField.getText() , emailField.getText() , cpfField.getText() , dataNascimentoField.getText() , bairroField.getText() , ruaField.getText() , numeroRuaField.getText() , cidadeField.getText(), estadoField.getText() , cepField.getText())){
                 JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
                 dispose();
                 limparCampos();
                 main.startMainApp();
             }
             else{
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente!");
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         });
         buttonPanel.add(cadastrarButton);
@@ -105,17 +106,17 @@ public class CadastroClientesView extends JFrame {
     }
 
     private void limparCampos() {
-        nomeField.setText("");
-        telefoneField.setText("");
-        emailField.setText("");
-        cpfField.setText("");
-        dataNascimentoField.setText("");
-        bairroField.setText("");
-        ruaField.setText("");
-        numeroRuaField.setText("");
-        cidadeField.setText("");
-        estadoField.setText("");
-        cepField.setText("");
+        nomeField.setText(null);
+        telefoneField.setText(null);
+        emailField.setText(null);
+        cpfField.setText(null);
+        dataNascimentoField.setText(null);
+        bairroField.setText(null);
+        ruaField.setText(null);
+        numeroRuaField.setText(null);
+        cidadeField.setText(null);
+        estadoField.setText(null);
+        cepField.setText(null);
     }
 }
 

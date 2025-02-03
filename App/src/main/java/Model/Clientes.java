@@ -10,7 +10,7 @@ public class Clientes {
     private String dataNascimento;
     private String bairro;
     private String rua;
-    private int numeroRua;
+    private String  numeroRua;
     private String cidade;
     private String estado;
     private String cep;
@@ -45,11 +45,11 @@ public class Clientes {
         this.cidade = cidade;
     }
 
-    public int getNumeroRua() {
+    public String getNumeroRua() {
         return numeroRua;
     }
 
-    public void setNumeroRua(int numeroRua) {
+    public void setNumeroRua(String numeroRua) {
         this.numeroRua = numeroRua;
     }
 

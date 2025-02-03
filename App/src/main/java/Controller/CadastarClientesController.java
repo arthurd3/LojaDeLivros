@@ -10,35 +10,46 @@ public class CadastarClientesController {
 
     private List<Clientes> clientesCadastrados;
 
+
     public CadastarClientesController() {
         this.clientesCadastrados = new ArrayList<>();
     }
 
-    public boolean cadastrarCliente(JTextField nomeField, JTextField telefoneField, JTextField emailField, JTextField cpfField, JTextField dataNascimentoField, JTextField bairroField, JTextField ruaField, JTextField numeroRuaField, JTextField cidadeField, JTextField estadoField, JTextField cepField) {
-        try{
-            Clientes cliente = new Clientes();
-            cliente.setNome(nomeField.getText());
-            cliente.setTelefone(telefoneField.getText());
-            cliente.setEmail(emailField.getText());
-            cliente.setCpf(cpfField.getText());
-            cliente.setDataNascimento(dataNascimentoField.getText());
-            cliente.setBairro(bairroField.getText());
-            cliente.setRua(ruaField.getText());
-            cliente.setNumeroRua(Integer.parseInt(numeroRuaField.getText()));
-            cliente.setCidade(cidadeField.getText());
-            cliente.setEstado(estadoField.getText());
-            cliente.setCep(cepField.getText());
-            clientesCadastrados.add(cliente);
+    public boolean cadastrarCliente(String nomeField, String telefoneField, String emailField, String cpfField, String dataNascimentoField, String bairroField, String ruaField, String numeroRuaField, String cidadeField, String estadoField, String cepField) {
 
-            return true;
+        if (nomeField.trim().isEmpty() || telefoneField.trim().isEmpty() || emailField.trim().isEmpty() ||
+                cpfField.trim().isEmpty() || dataNascimentoField.trim().isEmpty() || bairroField.trim().isEmpty() ||
+                ruaField.trim().isEmpty() || numeroRuaField.trim().isEmpty() || cidadeField.trim().isEmpty() ||
+                estadoField.trim().isEmpty() || cepField.trim().isEmpty()) {
 
-        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
+        Clientes cliente = new Clientes();
+        cliente.setNome(nomeField);
+        cliente.setTelefone(telefoneField);
+        cliente.setEmail(emailField);
+        cliente.setCpf(cpfField);
+        cliente.setDataNascimento(dataNascimentoField);
+        cliente.setBairro(bairroField);
+        cliente.setRua(ruaField);
+        cliente.setNumeroRua(numeroRuaField);
+        cliente.setCidade(cidadeField);
+        cliente.setEstado(estadoField);
+        cliente.setCep(cepField);
+
+        try {
+            clientesCadastrados.add(cliente);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
     }
 
     public List<Clientes> getClientesCadastrados() {
         return clientesCadastrados;
     }
 }
+
+
