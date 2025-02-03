@@ -4,7 +4,10 @@ import Controller.CadastarClientesController;
 import Controller.ClientesController;
 import Model.Clientes;
 
-public class ClientesView {
+import javax.swing.*;
+
+
+public class ClientesView extends JFrame {
     private ClientesController controller;
     private CadastarClientesController cadastroController;
 
@@ -13,13 +16,13 @@ public class ClientesView {
         this.cadastroController = cadastroController;
     }
 
+
     public void clienteInfos(){
         for (Clientes cliente : cadastroController.getClientesCadastrados()) {
             String infos = controller.pegarInfos(cliente);
             System.out.println(infos);
         }
     }
-
 
 
 }

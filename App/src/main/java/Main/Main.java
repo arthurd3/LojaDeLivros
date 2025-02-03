@@ -5,6 +5,7 @@ import Controller.CadastarClientesController;
 import Controller.ClientesController;
 import Model.Clientes;
 import View.CadastroClientesView;
+import View.ClienteDeletarView;
 import View.ClientesView;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class Main {
     private static CadastarClientesController cadClienteController = new CadastarClientesController();
     private static ClientesView clienteView = new ClientesView(clienteController ,cadClienteController);
     private static CadastroClientesView cadClienteView = new CadastroClientesView(main ,cadClienteController);
+    private static ClienteDeletarView clienteDeletar = new ClienteDeletarView(main , clienteController , cadClienteController);
 
 
     public static void main(String[] args) {
@@ -64,6 +66,9 @@ public class Main {
             case 1:
                 clienteView.clienteInfos();
                 startMainApp();
+                break;
+            case 2:
+                clienteDeletar.setVisible(true);
                 break;
             default:
                 System.exit(0);
