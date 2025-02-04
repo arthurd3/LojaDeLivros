@@ -70,6 +70,9 @@ public class Main {
             case 2:
                 clienteDeletar.setVisible(true);
                 break;
+            case 3:
+                startMainApp();
+                break;
             default:
                 System.exit(0);
                 break;

@@ -1,16 +1,19 @@
 package View;
 
 import Controller.CadastarClientesController;
+import Controller.ClienteDeletarController;
 import Controller.ClientesController;
 import Main.Main;
-import Model.Clientes;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ClienteDeletarView extends JFrame {
+
     private ClientesController controller;
     private CadastarClientesController cadastroController;
+    private ClienteDeletarController controllerDeletar;
     private Main main;
 
     public ClienteDeletarView(Main main, ClientesController controller, CadastarClientesController cadastroController) {
@@ -18,6 +21,8 @@ public class ClienteDeletarView extends JFrame {
         this.controller = controller;
         this.cadastroController = cadastroController;
 
+
+        this.controllerDeletar = new ClienteDeletarController(cadastroController, controller);
         setTitle("Deletar Cliente");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -66,6 +71,7 @@ public class ClienteDeletarView extends JFrame {
     }
 
     public void exibirClientes() {
+
         JFrame listaClientesFrame = new JFrame("Lista de Clientes");
         listaClientesFrame.setSize(500, 400);
         listaClientesFrame.setLocationRelativeTo(null);
@@ -75,12 +81,8 @@ public class ClienteDeletarView extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         listaClientesFrame.add(scrollPane);
-
-        for (Clientes cliente : cadastroController.getClientesCadastrados()) {
-            String infos = controller.pegarInfos(cliente);
-            textArea.append(infos + "\n");
-        }
-
+        String infos = controllerDeletar.mostarClientes();
+        textArea.append(infos + "\n");
         listaClientesFrame.setVisible(true);
     }
 }
