@@ -50,6 +50,17 @@ public class CadastarClientesController {
     public List<Clientes> getClientesCadastrados() {
         return clientesCadastrados;
     }
+
+    public void deletarCliente(String nomeField) {
+       try {
+           clientesCadastrados.removeIf(cliente -> cliente.getNome().equals(nomeField));
+
+       }catch (NullPointerException e){
+           JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+       }
+
+
+    }
 }
 
 

@@ -41,14 +41,20 @@ public class ClienteDeletarView extends JFrame {
 
         JPanel botoesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
+
+        //DELETAR
         JButton deletarButton = new JButton("Deletar");
         deletarButton.addActionListener(e -> {
-            //ADICIONAR OPCAO DE DELETAR
+            String busca = buscaField.getText();
+            if(controllerDeletar.buscarClientes(busca)){
+
+                controllerDeletar.excluirClientes(busca);
+            }
+
         });
         botoesPanel.add(deletarButton);
 
-
-
+        //VOLTAR
         JButton voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(e -> {
             dispose();
@@ -58,7 +64,7 @@ public class ClienteDeletarView extends JFrame {
 
         panel.add(botoesPanel, BorderLayout.SOUTH);
 
-
+        //LISTAR
         JButton listarButton = new JButton("Listar");
         listarButton.addActionListener(e -> {
             exibirClientes();
@@ -81,8 +87,10 @@ public class ClienteDeletarView extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         listaClientesFrame.add(scrollPane);
+
         String infos = controllerDeletar.mostarClientes();
         textArea.append(infos + "\n");
+
         listaClientesFrame.setVisible(true);
     }
 }

@@ -27,13 +27,13 @@ public class Main {
         String[] opcoes = {"Cadastrar Cliente", "Listar Clientes", "Deletar Cliente" ,"Editar Cliente"};
         int escolha = JOptionPane.showOptionDialog(
                 null, // Componente pai (null = centro da tela)
-                "Selecione uma opção:", // Mensagem
-                "Menu Principal", // Título da janela
-                JOptionPane.DEFAULT_OPTION, // Tipo de opção
-                JOptionPane.QUESTION_MESSAGE, // Tipo de mensagem
+                "Selecione uma opção:",
+                "Menu Principal",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
                 null,
-                opcoes, // Opções
-                opcoes[0] // Opção padrão
+                opcoes,
+                opcoes[0]
         );
 
         switch (escolha) {
