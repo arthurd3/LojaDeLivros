@@ -1,8 +1,8 @@
 package View;
 
 import Controller.CadastarClientesController;
-import Controller.ClienteDeletarController;
 import Controller.ClientesController;
+import Main.Main;
 import Model.Clientes;
 
 import javax.swing.*;
@@ -13,9 +13,10 @@ public class ClientesView extends JFrame {
     private Clientes clientes;
     private ClientesController controller;
     private CadastarClientesController cadastroController;
-
-    public ClientesView(ClientesController controller , CadastarClientesController cadastroController) {
+    private Main main;
+    public ClientesView(Main main, ClientesController controller , CadastarClientesController cadastroController) {
         this.cadastroController = cadastroController;
+        this.main = main;
         this.controller = new ClientesController(clientes ,  cadastroController);
     }
 
@@ -38,7 +39,11 @@ public class ClientesView extends JFrame {
 
         // Botão de Voltar
         JButton voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(e -> listaClientesFrame.dispose());
+        voltarButton.addActionListener(e -> {
+            listaClientesFrame.dispose();
+            main.startMainApp();
+        });
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(voltarButton);
