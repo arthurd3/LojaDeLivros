@@ -4,13 +4,14 @@ import Controller.CadastarClientesController;
 import Controller.ClienteDeletarController;
 import Controller.ClientesController;
 import Main.Main;
+import Model.Clientes;
 
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ClienteDeletarView extends JFrame {
-
+    private Clientes clientes;
     private ClientesController controller;
     private CadastarClientesController cadastroController;
     private ClienteDeletarController controllerDeletar;
@@ -18,11 +19,12 @@ public class ClienteDeletarView extends JFrame {
 
     public ClienteDeletarView(Main main, ClientesController controller, CadastarClientesController cadastroController) {
         this.main = main;
-        this.controller = controller;
+
         this.cadastroController = cadastroController;
 
 
-        this.controllerDeletar = new ClienteDeletarController(cadastroController, controller);
+        this.controllerDeletar = new ClienteDeletarController(cadastroController);
+        this.controller = new ClientesController(clientes ,  cadastroController);
         setTitle("Deletar Cliente");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,10 +48,11 @@ public class ClienteDeletarView extends JFrame {
         JButton deletarButton = new JButton("Deletar");
         deletarButton.addActionListener(e -> {
             String busca = buscaField.getText();
-            if(controllerDeletar.buscarClientes(busca)){
-
+            if(controller.buscarClientes(busca)){
                 controllerDeletar.excluirClientes(busca);
-            }
+                JOptionPane.showMessageDialog(this, "Cliente deletado com sucesso!");
+            }else
+                JOptionPane.showMessageDialog(null , "Erro ao excluir cliente!");
 
         });
         botoesPanel.add(deletarButton);
@@ -77,19 +80,26 @@ public class ClienteDeletarView extends JFrame {
     }
 
     public void exibirClientes() {
-
         JFrame listaClientesFrame = new JFrame("Lista de Clientes");
         listaClientesFrame.setSize(500, 400);
         listaClientesFrame.setLocationRelativeTo(null);
+        listaClientesFrame.setLayout(new BorderLayout());
 
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
-
         JScrollPane scrollPane = new JScrollPane(textArea);
-        listaClientesFrame.add(scrollPane);
+        listaClientesFrame.add(scrollPane, BorderLayout.CENTER);
 
-        String infos = controllerDeletar.mostarClientes();
+        String infos = controller.mostarClientes();
         textArea.append(infos + "\n");
+
+        // Botão de Voltar
+        JButton voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(e -> listaClientesFrame.dispose());
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(voltarButton);
+        listaClientesFrame.add(buttonPanel, BorderLayout.SOUTH);
 
         listaClientesFrame.setVisible(true);
     }

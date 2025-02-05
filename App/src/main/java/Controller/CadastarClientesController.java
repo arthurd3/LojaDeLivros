@@ -26,6 +26,7 @@ public class CadastarClientesController {
             return false;
         }
 
+
         Clientes cliente = new Clientes();
         cliente.setNome(nomeField);
         cliente.setTelefone(telefoneField);
@@ -51,6 +52,8 @@ public class CadastarClientesController {
         return clientesCadastrados;
     }
 
+
+
     public void deletarCliente(String nomeField) {
        try {
            clientesCadastrados.removeIf(cliente -> cliente.getNome().equals(nomeField));
@@ -58,8 +61,6 @@ public class CadastarClientesController {
        }catch (NullPointerException e){
            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
        }
-
-
     }
 }
 

@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class Main {
     private static Main main = new Main();
-    private static ClientesController clienteController = new ClientesController(new Clientes());
+    private static ClientesController clienteController = new ClientesController(new Clientes() , new CadastarClientesController());
     private static CadastarClientesController cadClienteController = new CadastarClientesController();
     private static ClientesView clienteView = new ClientesView(clienteController ,cadClienteController);
     private static CadastroClientesView cadClienteView = new CadastroClientesView(main ,cadClienteController);
@@ -65,7 +65,6 @@ public class Main {
                 break;
             case 1:
                 clienteView.clienteInfos();
-                startMainApp();
                 break;
             case 2:
                 clienteDeletar.setVisible(true);
