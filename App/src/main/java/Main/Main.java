@@ -13,8 +13,8 @@ import javax.swing.*;
 
 public class Main {
     private static Main main = new Main();
-    private static ClientesController clienteController = new ClientesController(new Clientes() , new CadastarClientesController());
     private static CadastarClientesController cadClienteController = new CadastarClientesController();
+    private static ClientesController clienteController = new ClientesController(new Clientes(), cadClienteController);
     private static ClientesView clienteView = new ClientesView(main , clienteController ,cadClienteController);
     private static ClienteEditarView clienteEditarView = new ClienteEditarView(main ,cadClienteController);
     private static CadastroClientesView cadClienteView = new CadastroClientesView(main ,cadClienteController);

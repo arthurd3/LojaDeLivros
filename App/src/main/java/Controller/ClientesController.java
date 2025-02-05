@@ -6,9 +6,9 @@ public class ClientesController {
     private Clientes cliente;
     private CadastarClientesController cadastroController;
 
-    public ClientesController(Clientes cliente ,CadastarClientesController cadastroController  ) {
-        this.cliente = cliente;
+    public ClientesController(Clientes cliente , CadastarClientesController cadastroController) {
         this.cadastroController = cadastroController;
+        this.cliente = cliente;
     }
 
     public String pegarInfos(Clientes cliente) {
@@ -34,9 +34,6 @@ public class ClientesController {
 
 
     public String mostarClientes() {
-        if (cadastroController == null) {
-            return "Erro: cadastroController não inicializado.";
-        }
 
         StringBuilder infos = new StringBuilder();
         for (Clientes cliente : cadastroController.getClientesCadastrados()) {
@@ -45,15 +42,17 @@ public class ClientesController {
         return infos.length() == 0 ? "Vazio" : infos.toString();
     }
 
-    public boolean buscarClientes(String clienteBusca) {
+    public boolean buscarClientes(String clienteBusca ) {
         if (cadastroController == null) {
+            System.out.println("Erro: cadastroController está nulo!");
             return false;
         }
 
-        for (Clientes cliente : cadastroController.getClientesCadastrados()) {
-            return cliente.getNome().equals(clienteBusca);
+        for (Clientes clientes : cadastroController.getClientesCadastrados()) {
+            return clientes.getNome().equals(clienteBusca);
         }
 
+        System.out.println("erro");
         return false;
     }
 

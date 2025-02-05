@@ -19,12 +19,10 @@ public class ClienteDeletarView extends JFrame {
 
     public ClienteDeletarView(Main main, ClientesController controller, CadastarClientesController cadastroController) {
         this.main = main;
-
         this.cadastroController = cadastroController;
-
-
         this.controllerDeletar = new ClienteDeletarController(cadastroController);
-        this.controller = new ClientesController(clientes ,  cadastroController);
+        this.controller = new ClientesController(clientes, cadastroController);
+
         setTitle("Deletar Cliente");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

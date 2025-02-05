@@ -17,7 +17,7 @@ public class ClientesView extends JFrame {
     public ClientesView(Main main, ClientesController controller , CadastarClientesController cadastroController) {
         this.cadastroController = cadastroController;
         this.main = main;
-        this.controller = new ClientesController(clientes ,  cadastroController);
+        this.controller = new ClientesController(clientes , cadastroController);
     }
 
 
