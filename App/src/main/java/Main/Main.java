@@ -72,6 +72,7 @@ public class Main {
                 clienteDeletar.setVisible(true);
                 break;
             case 3:
+                ClienteEditarView clienteEditarView = new ClienteEditarView(main ,cadClienteController , clienteController , clienteDeletar);
                 clienteEditarView.setVisible(true);
                 break;
             default:
