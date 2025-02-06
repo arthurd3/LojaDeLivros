@@ -18,7 +18,7 @@ public class Main {
     private static ClientesView clienteView = new ClientesView(main , clienteController ,cadClienteController);
     private static CadastroClientesView cadClienteView = new CadastroClientesView(main ,cadClienteController);
     private static ClienteDeletarView clienteDeletar = new ClienteDeletarView(main , clienteController , cadClienteController);
-    private static ClienteEditarView clienteEditarView = new ClienteEditarView(main ,cadClienteController , clienteController , clienteDeletar);
+    
 
 
     public static void main(String[] args) {
