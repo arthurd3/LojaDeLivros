@@ -56,4 +56,23 @@ public class ClientesController {
         return false;
     }
 
+
+    public Clientes buscarClientesObj(String clienteBusca) {
+        if (cadastroController == null) {
+            System.out.println("Erro: cadastroController está nulo!");
+            return null;
+        }
+
+        for (Clientes clientes : cadastroController.getClientesCadastrados()) {
+            if(clientes.getNome().equals(clienteBusca)){
+                return clientes;
+            }else{
+                return null;
+            }
+        }
+
+        System.out.println("erro");
+        return null;
+    }
+
 }
