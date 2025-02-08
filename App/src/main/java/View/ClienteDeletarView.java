@@ -49,6 +49,8 @@ public class ClienteDeletarView extends JFrame {
             if(controller.buscarClientes(busca)){
                 controllerDeletar.excluirClientes(busca);
                 JOptionPane.showMessageDialog(this, "Cliente deletado com sucesso!");
+                dispose();
+                main.startMainApp();
             }else
                 JOptionPane.showMessageDialog(null , "Erro ao excluir cliente!");
 

@@ -9,10 +9,11 @@ import java.util.List;
 public class CadastarClientesController {
 
     private List<Clientes> clientesCadastrados;
+    private ClienteDeletarController clienteDeletarController;
 
-
-    public CadastarClientesController() {
+    public CadastarClientesController(ClienteDeletarController clienteDeletarController) {
         this.clientesCadastrados = new ArrayList<>();
+        this.clienteDeletarController = clienteDeletarController;
     }
 
     public boolean cadastrarCliente(String nomeField, String telefoneField, String emailField, String cpfField, String dataNascimentoField, String bairroField, String ruaField, String numeroRuaField, String cidadeField, String estadoField, String cepField) {
@@ -56,8 +57,8 @@ public class CadastarClientesController {
 
     public void deletarCliente(String nomeField) {
        try {
-           clientesCadastrados.removeIf(cliente -> cliente.getNome().equals(nomeField));
-
+           List<Clientes> clientesDeletados = clienteDeletarController.deletarCliente(nomeField);
+           this.clientesCadastrados = clientesDeletados;
        }catch (NullPointerException e){
            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
        }
