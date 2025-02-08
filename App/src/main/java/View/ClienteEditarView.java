@@ -72,7 +72,7 @@ public class ClienteEditarView extends JFrame {
         panel.add(botoesPanel, BorderLayout.SOUTH);
         add(panel);
 
-        // Inicializar campos
+
         nomeField = new JTextField();
         telefoneField = new JTextField();
         emailField = new JTextField();
@@ -86,7 +86,6 @@ public class ClienteEditarView extends JFrame {
         cepField = new JTextField();
 
 
-
     }
 
     private JLabel criarLabel(String texto) {
@@ -94,21 +93,6 @@ public class ClienteEditarView extends JFrame {
         label.setHorizontalAlignment(SwingConstants.RIGHT);
         return label;
     }
-
-    private void limparCampos() {
-        nomeField.setText("");
-        telefoneField.setText("");
-        emailField.setText("");
-        cpfField.setText("");
-        dataNascimentoField.setText("");
-        bairroField.setText("");
-        ruaField.setText("");
-        numeroRuaField.setText("");
-        cidadeField.setText("");
-        estadoField.setText("");
-        cepField.setText("");
-    }
-
 
 
     private void preencherDados(Clientes cliente) {
@@ -150,7 +134,7 @@ public class ClienteEditarView extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Criar painel principal
+
         JPanel panel = new JPanel(new GridLayout(12, 2, 10, 10));
         panel.setBorder(new TitledBorder("Dados do Cliente"));
 
@@ -177,10 +161,10 @@ public class ClienteEditarView extends JFrame {
         panel.add(criarLabel("CEP:"));
         panel.add(cepField);
 
-        // Criar painel de botões
+
         JPanel botoesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        // Botão Salvar (Editar)
+
         JButton editarButton = new JButton("Salvar Alterações");
         editarButton.addActionListener(e -> {
             cliente.setNome(nomeField.getText());
@@ -194,11 +178,12 @@ public class ClienteEditarView extends JFrame {
             cliente.setCidade(cidadeField.getText());
             cliente.setEstado(estadoField.getText());
             cliente.setCep(cepField.getText());
-
+            dispose();
+            JOptionPane.showMessageDialog(null, "Cliente Alterado com Sucesso!");
+            main.startMainApp();
         });
         botoesPanel.add(editarButton);
 
-        // Botão Voltar
         voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(e -> {
             dispose();
@@ -206,12 +191,12 @@ public class ClienteEditarView extends JFrame {
         });
         botoesPanel.add(voltarButton);
 
-        // Adicionar componentes à janela
+
         setLayout(new BorderLayout());
         add(panel, BorderLayout.CENTER);
         add(botoesPanel, BorderLayout.SOUTH);
 
-        // Exibir janela
+
         setVisible(true);
     }
 

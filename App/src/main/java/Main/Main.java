@@ -1,6 +1,5 @@
 package Main;
 
-
 import Controller.CadastarClientesController;
 import Controller.ClienteDeletarController;
 import Controller.ClientesController;
@@ -30,7 +29,7 @@ public class Main {
     public static void startMainApp() {
         String[] opcoes = {"Cadastrar Cliente", "Listar Clientes", "Deletar Cliente" ,"Editar Cliente"};
         int escolha = JOptionPane.showOptionDialog(
-                null, // Componente pai (null = centro da tela)
+                null, // (null = centro da tela)
                 "Selecione uma opção:",
                 "Menu Principal",
                 JOptionPane.DEFAULT_OPTION,
@@ -65,7 +64,8 @@ public class Main {
     public static void startApp(int opcao) {
         switch(opcao){
             case 0:
-                cadClienteView.setVisible(true);
+                CadastroClientesView cadastroClientesView = new CadastroClientesView( main,  cadClienteController);
+                cadastroClientesView.setVisible(true);
                 break;
             case 1:
                 clienteView.clienteInfos();

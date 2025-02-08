@@ -77,7 +77,6 @@ public class CadastroClientesView extends JFrame {
             if(controller.cadastrarCliente(nomeField.getText() ,telefoneField.getText() , emailField.getText() , cpfField.getText() , dataNascimentoField.getText() , bairroField.getText() , ruaField.getText() , numeroRuaField.getText() , cidadeField.getText(), estadoField.getText() , cepField.getText())){
                 JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso!");
                 dispose();
-                limparCampos();
                 main.startMainApp();
             }
             else{
@@ -88,7 +87,6 @@ public class CadastroClientesView extends JFrame {
 
         voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(e -> {
-            limparCampos();
             dispose();
             main.startMainApp();
         });
@@ -105,19 +103,7 @@ public class CadastroClientesView extends JFrame {
         return label;
     }
 
-    private void limparCampos() {
-        nomeField.setText(null);
-        telefoneField.setText(null);
-        emailField.setText(null);
-        cpfField.setText(null);
-        dataNascimentoField.setText(null);
-        bairroField.setText(null);
-        ruaField.setText(null);
-        numeroRuaField.setText(null);
-        cidadeField.setText(null);
-        estadoField.setText(null);
-        cepField.setText(null);
-    }
+
 }
 
 
